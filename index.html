@@ -372,10 +372,13 @@
       border-radius: 12px; display: flex; align-items: center; gap: 1.5rem;
     }
     .yt-icon {
-      width: 56px; height: 56px; background: rgba(255, 0, 0, 0.12);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; flex-shrink: 0;
+      width: 60px; height: 60px; background: #FF0000;
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+      transition: all 0.3s;
     }
+    .yt-icon:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255, 0, 0, 0.45); }
+    .yt-icon svg { width: 24px; height: 24px; fill: white; }
     .yt-text h4 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--white); margin-bottom: 0.3rem; }
     .yt-text p { font-size: 0.88rem; color: rgba(255, 255, 255, 0.45); line-height: 1.6; }
 
@@ -691,7 +694,7 @@
       </div>
 
       <div class="training-youtube reveal">
-        <div class="yt-icon">&#9654;</div>
+        <a href="https://www.youtube.com/@LondonIAC" target="_blank" rel="noopener" class="yt-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></a>
         <div class="yt-text">
           <h4><a href="https://www.youtube.com/@LondonIAC" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">YouTube Channel</a></h4>
           <p>Video tutorials and walkthroughs on automation tools, infrastructure as code, and DevOps practices. <a href="https://www.youtube.com/@LondonIAC" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none;">Check out my videos here</a>.</p>
