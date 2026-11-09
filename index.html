@@ -118,6 +118,20 @@
       color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase;
       margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
     }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem; font-weight: 500; color: rgba(255, 255, 255, 0.85); text-decoration: none;
+      background: rgba(0, 184, 212, 0.08); border: 1px solid rgba(0, 184, 212, 0.3);
+      padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 100px; margin-bottom: 1.75rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;
+    }
+    .hero-pill:hover { background: rgba(0, 184, 212, 0.15); border-color: var(--cyan); color: var(--white); transform: translateY(-2px); }
+    .hero-pill-tag {
+      font-family: 'Fira Code', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--cyan); color: var(--navy); padding: 0.2rem 0.6rem; border-radius: 100px;
+    }
+    @media (max-width: 480px) { .hero-pill-long { display: none; } }
     .hero h1 {
       font-family: 'Outfit', sans-serif; font-weight: 800;
       font-size: clamp(2.8rem, 7vw, 5rem); color: var(--white);
@@ -490,6 +504,7 @@
     <div class="hero-orb hero-orb--2"></div>
     <div class="hero-orb hero-orb--3"></div>
     <div class="hero-content">
+      <a href="/ai-automation/" class="hero-pill"><span class="hero-pill-tag">New</span> AI Automation<span class="hero-pill-long"> for small &amp; growing businesses</span> <span aria-hidden="true">&rarr;</span></a>
       <p class="hero-eyebrow">Web Development &middot; AI Automation &middot; Custom Agents</p>
       <h1>Modern websites and automation for businesses that mean business.</h1>
       <p class="hero-sub">I&rsquo;m Dennis McCarthy. 25 years building automated solutions for financial institutions and technology vendors. Now I build websites, automate processes, and create custom AI agents that help small businesses work smarter.</p>
