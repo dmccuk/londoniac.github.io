@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e1a'/><text x='50' y='70' font-family='sans-serif' font-size='60' font-weight='bold' fill='%23E63946' text-anchor='middle'>L</text></svg>">
+  <title>AI Automation for Small &amp; Growing Businesses | londoniac.co.uk</title>
+  <meta name="description" content="Practical AI automation for small and growing businesses. Less admin, connected systems and custom software, from an engineer with 25+ years of enterprise experience. Sussex, Surrey, London and remote across the UK.">
+  <link rel="canonical" href="https://www.londoniac.co.uk/ai-automation/">
+  <meta property="og:title" content="AI Automation for Small &amp; Growing Businesses | LondonIAC">
+  <meta property="og:description" content="Less admin. More time for your business. Practical AI automation from an engineer with 25+ years of enterprise experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.londoniac.co.uk/ai-automation/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX5SZRQQP8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NX5SZRQQP8');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a0e1a;
+      --navy-light: #131829;
+      --navy-mid: #1a2035;
+      --cyan: #00b8d4;
+      --cyan-glow: #00e5ff;
+      --cyan-dim: #0091a7;
+      --surface: #f8fafb;
+      --surface-alt: #f0f2f5;
+      --white: #ffffff;
+      --text-primary: #1a1e2e;
+      --text-secondary: #555b6e;
+      --text-muted: #8a91a0;
+      --border: #e2e5ea;
+      --border-light: #eef0f3;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 2rem; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10, 14, 26, 0.82);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(0, 184, 212, 0.08);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled { background: rgba(10, 14, 26, 0.95); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem;
+      color: #E63946; text-decoration: none; letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--white); font-weight: 400; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; color: rgba(255, 255, 255, 0.65);
+      text-decoration: none; letter-spacing: 0.03em; transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px; background: var(--cyan); transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      background: var(--navy); overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 184, 212, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 184, 212, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+    }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; animation: orbFloat 20s ease-in-out infinite; }
+    .hero-orb--1 { width: 500px; height: 500px; background: var(--cyan); top: -10%; right: -5%; }
+    .hero-orb--2 { width: 350px; height: 350px; background: #6366f1; bottom: -15%; left: 10%; animation-delay: -7s; opacity: 0.2; }
+    .hero-orb--3 { width: 200px; height: 200px; background: var(--cyan-glow); top: 40%; left: 45%; animation-delay: -13s; opacity: 0.15; }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 2rem; margin: 0 auto; text-align: center; }
+    .hero-eyebrow {
+      font-family: 'Fira Code', monospace; font-size: 0.8rem; font-weight: 400;
+      color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 5rem); color: var(--white);
+      line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300;
+      color: rgba(255, 255, 255, 0.6); max-width: 600px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+    .hero-buttons {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--cyan); color: var(--navy); }
+    .btn-primary:hover { background: var(--cyan-glow); box-shadow: 0 0 30px rgba(0, 184, 212, 0.3); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--white); border: 1.5px solid rgba(255, 255, 255, 0.2); }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; animation: fadeUp 0.8s ease forwards 1.2s; }
+    .hero-scroll span { display: block; width: 20px; height: 32px; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 12px; position: relative; }
+    .hero-scroll span::after {
+      content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+      width: 3px; height: 8px; background: var(--cyan); border-radius: 2px;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.3; transform: translateX(-50%) translateY(8px); } }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; scroll-margin-top: 60px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Fira Code', monospace; font-size: 0.75rem; font-weight: 500;
+      color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--text-primary);
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .section-title--light { color: var(--white); }
+    .section-intro { font-size: 1.05rem; color: var(--text-secondary); max-width: 680px; line-height: 1.8; }
+    .section-intro--light { color: rgba(255, 255, 255, 0.55); }
+
+    /* ── INTRO ── */
+    .intro { background: var(--white); padding-top: 7rem; }
+    .intro-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+    .intro-text p { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.8; }
+    .pillars { display: grid; gap: 1rem; }
+    .pillar {
+      background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px;
+      padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .pillar:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); }
+    .pillar-num { font-family: 'Fira Code', monospace; font-size: 0.8rem; font-weight: 500; color: var(--cyan-dim); padding-top: 0.15rem; }
+    .pillar h3 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .pillar p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--surface); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--border-light); border-radius: 16px;
+      padding: 2rem; position: relative; overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan-glow));
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 10px; margin-bottom: 1.25rem;
+      background: rgba(0, 184, 212, 0.08); border: 1px solid rgba(0, 184, 212, 0.15);
+      display: flex; align-items: center; justify-content: center; color: var(--cyan-dim);
+    }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-card h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+    .service-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; }
+    .services-note { margin-top: 2.5rem; font-size: 0.95rem; color: var(--text-muted); text-align: center; }
+
+    /* ── SAVINGS ── */
+    .savings { background: var(--white); }
+    .savings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 1rem; }
+    .savings-text p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .savings-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.75rem 0; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px;
+      padding: 1.25rem; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); }
+    .stat-number { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2rem; color: var(--cyan-dim); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; line-height: 1.4; }
+    .savings-source { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+    .savings-source a { color: var(--cyan-dim); text-decoration: none; }
+    .savings-source a:hover { color: var(--cyan); }
+    .savings-approach {
+      border-left: 3px solid var(--cyan); padding: 0.25rem 0 0.25rem 1.25rem; margin-top: 1.75rem;
+      font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 500; color: var(--text-primary); line-height: 1.5;
+    }
+
+    .calc {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 16px;
+      padding: 2rem; color: var(--white); position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(10, 14, 26, 0.25);
+    }
+    .calc::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0, 184, 212, 0.3) 20px, rgba(0, 184, 212, 0.3) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0, 184, 212, 0.3) 20px, rgba(0, 184, 212, 0.3) 21px);
+    }
+    .calc > * { position: relative; }
+    .calc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+    .calc-head h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; }
+    .calc-badge {
+      font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--cyan);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid rgba(0, 184, 212, 0.3); padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;
+    }
+    .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .calc-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .calc-field label { font-size: 0.78rem; font-weight: 500; color: rgba(255, 255, 255, 0.6); line-height: 1.3; }
+    .calc-input-wrap { position: relative; display: flex; align-items: center; }
+    .calc-input-wrap .prefix { position: absolute; left: 0.9rem; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: rgba(255, 255, 255, 0.45); pointer-events: none; }
+    .calc-field input {
+      width: 100%; font-family: 'Fira Code', monospace; font-size: 0.95rem; padding: 0.7rem 0.9rem;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px; color: var(--white); outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .calc-input-wrap .prefix + input { padding-left: 1.8rem; }
+    .calc-field input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 184, 212, 0.15); }
+    .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .calc-result-label { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: rgba(255, 255, 255, 0.5); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .calc-result-value { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 3.5vw, 2.1rem); color: var(--cyan-glow); line-height: 1.1; }
+    .calc-result-value--muted { color: var(--white); }
+    .calc-note { margin-top: 1.25rem; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); line-height: 1.6; }
+
+    /* ── CASE STUDY ── */
+    .case-study { background: var(--surface); }
+    .project-card {
+      background: var(--white); border: 1px solid var(--border-light); border-radius: 16px;
+      overflow: hidden; display: grid; grid-template-columns: 1fr 1.3fr; margin-top: 3rem;
+      position: relative;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan-glow));
+    }
+    .project-visual {
+      padding: 2rem; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; min-height: 320px;
+      background: linear-gradient(135deg, #030308, #1a0a2e);
+    }
+    .project-visual-pattern {
+      position: absolute; inset: 0; opacity: 0.1;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255, 0, 255, 0.15) 3px, rgba(255, 0, 255, 0.15) 4px);
+    }
+    .vox9-logo-sub {
+      font-family: 'Fira Code', monospace; font-size: 0.75rem; color: rgba(255, 0, 255, 0.9);
+      letter-spacing: 0.25em; text-transform: uppercase; margin-top: 0.5rem;
+      position: relative; z-index: 1; font-weight: 500;
+      text-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+    }
+    .project-info { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .project-tag {
+      font-family: 'Fira Code', monospace; font-size: 0.7rem; font-weight: 500;
+      color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .project-name {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem;
+      color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.01em;
+    }
+    .project-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+    .check-list { list-style: none; display: grid; gap: 0.5rem; margin: 0.5rem 0 1.5rem; }
+    .check-list li { font-size: 0.92rem; color: var(--text-secondary); padding-left: 1.6rem; position: relative; line-height: 1.6; }
+    .check-list li::before {
+      content: ''; position: absolute; left: 0; top: 0.45rem; width: 10px; height: 6px;
+      border-left: 2px solid var(--cyan-dim); border-bottom: 2px solid var(--cyan-dim); transform: rotate(-45deg);
+    }
+    .award-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem; align-self: flex-start;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 180, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.25); padding: 0.4rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1rem; font-size: 0.78rem; font-weight: 600; color: #D4A017; letter-spacing: 0.02em;
+    }
+    .project-link {
+      font-size: 0.88rem; font-weight: 600; color: var(--cyan-dim); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.3s, gap 0.3s;
+    }
+    .project-link:hover { color: var(--cyan); gap: 0.7rem; }
+    .project-link svg { width: 16px; height: 16px; }
+    .case-takeaway {
+      margin-top: 2rem; padding: 1.5rem 2rem; border-radius: 12px;
+      background: rgba(0, 184, 212, 0.06); border: 1px solid rgba(0, 184, 212, 0.15);
+      font-size: 1rem; color: var(--text-secondary); line-height: 1.7;
+    }
+    .case-takeaway strong { color: var(--text-primary); }
+
+    /* ── WHY ── */
+    .why { background: var(--navy); position: relative; overflow: hidden; }
+    .why::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(0, 184, 212, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.04) 0%, transparent 50%);
+    }
+    .why .container { position: relative; z-index: 1; }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
+    .why-card {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px; padding: 1.75rem; transition: all 0.3s;
+    }
+    .why-card:hover { background: rgba(0, 184, 212, 0.06); border-color: rgba(0, 184, 212, 0.15); transform: translateY(-3px); }
+    .why-card h3 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--white); margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.92rem; color: rgba(255, 255, 255, 0.5); line-height: 1.7; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--white); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; counter-reset: step; }
+    .process-step { position: relative; padding-top: 1.25rem; border-top: 2px solid var(--border); transition: border-color 0.3s; }
+    .process-step:hover { border-color: var(--cyan); }
+    .process-num { font-family: 'Fira Code', monospace; font-size: 0.75rem; font-weight: 500; color: var(--cyan-dim); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .process-step h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+    .contact-info h3 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; }
+    .contact-info p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--cyan-dim);
+      text-decoration: none; padding: 0.75rem 1.25rem;
+      background: rgba(0, 184, 212, 0.06); border: 1px solid rgba(0, 184, 212, 0.15);
+      border-radius: 8px; transition: all 0.3s;
+    }
+    .contact-email:hover { background: rgba(0, 184, 212, 0.1); border-color: var(--cyan); color: var(--cyan); }
+    .contact-area { margin-top: 1.75rem; font-size: 0.85rem; color: var(--text-muted); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.03em; }
+    .form-group input, .form-group textarea, .form-group select {
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.8rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 8px; background: var(--white);
+      color: var(--text-primary); outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-group select {
+      appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 2.5rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%238a91a0' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center; background-size: 14px;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 184, 212, 0.08); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit { align-self: flex-start; padding: 0.85rem 2.5rem; font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); padding: 3rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 0.75rem; }
+    .footer-logo a { color: inherit; text-decoration: none; }
+    .footer-logo span { color: var(--cyan); }
+    footer p { font-size: 0.8rem; color: rgba(255, 255, 255, 0.3); max-width: 720px; margin: 0 auto; }
+    footer p + p { margin-top: 0.75rem; }
+    footer a { color: rgba(255, 255, 255, 0.5); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .intro-grid, .savings-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-visual { min-height: 220px; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 3.5rem 1.25rem; scroll-margin-top: 52px; }
+      .intro { padding-top: 4.5rem; }
+      nav { padding: 0 1rem; height: 52px; }
+      .nav-logo { font-size: 0.85rem; }
+      .nav-links {
+        display: none; position: absolute; top: 52px; left: 0; right: 0;
+        background: rgba(10, 14, 26, 0.97); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem;
+        border-bottom: 1px solid rgba(0, 184, 212, 0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .services-grid, .why-grid, .process-grid { grid-template-columns: 1fr; }
+      .savings-stats { grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; }
+      .stat-card { padding: 1rem 0.75rem; }
+      .stat-number { font-size: 1.6rem; }
+      .calc { padding: 1.5rem; }
+      .calc-inputs, .calc-results { grid-template-columns: 1fr; }
+      .project-info { padding: 1.75rem; }
+      .case-takeaway { padding: 1.25rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo">London <span>Infrastructure As Code</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#savings">Savings</a></li>
+      <li><a href="#case-study">Case Study</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">AI Automation &middot; Custom Software &middot; AI Training</p>
+      <h1>Less admin. More time for your business.</h1>
+      <p class="hero-sub">Practical AI solutions that save time, reduce repetitive work and help small and growing businesses run more efficiently. Built by an engineer with 25+ years of enterprise experience.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Book a Free AI Opportunity Call</a>
+        <a href="#services" class="btn btn-secondary">What AI Could Do for You</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><span></span></div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <p class="section-label">AI Automation</p>
+          <h2 class="section-title">No big IT team. No transformation programme.</h2>
+          <p>You don&rsquo;t need a large IT department or an expensive consultancy to benefit from AI. I help businesses find the repetitive tasks eating up staff time, connect the systems they already use, and build practical automations that solve everyday problems.</p>
+          <p>From handling enquiries and producing reports to custom software and AI-powered workflows, I turn time-consuming processes into simpler, more reliable ways of working.</p>
+        </div>
+        <div class="pillars reveal">
+          <div class="pillar">
+            <span class="pillar-num">01</span>
+            <div>
+              <h3>AI Automation</h3>
+              <p>Take repetitive admin off your team&rsquo;s plate: enquiries, documents, data entry and reporting.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-num">02</span>
+            <div>
+              <h3>Custom Software</h3>
+              <p>Dashboards, portals, integrations and small apps designed around how your team actually works.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-num">03</span>
+            <div>
+              <h3>AI Team Training</h3>
+              <p>Hands-on workshops that help technical teams adopt AI-assisted development safely and productively.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label reveal">What AI Could Do</p>
+      <h2 class="section-title reveal">Where most businesses lose time.</h2>
+      <p class="section-intro reveal">Most businesses have repetitive tasks that quietly take up hours of staff time every week. These are the usual places to start.</p>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <h3>Emails &amp; Enquiries</h3>
+          <p>Organise incoming messages, pull out the important details, update your systems and draft replies ready for your approval.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div>
+          <h3>Documents &amp; Data Entry</h3>
+          <p>Process forms, invoices and supplier documents automatically, cutting out manual copying and repetitive admin.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <h3>Reporting &amp; Spreadsheets</h3>
+          <p>Bring information together from different systems and produce the reports you need, automatically and on schedule.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M19 8v6M22 11h-6"/></svg></div>
+          <h3>Customer Management</h3>
+          <p>Connect your website, booking platform and CRM so customer information flows between them without being typed in twice.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div>
+          <h3>Internal Business Tools</h3>
+          <p>Custom dashboards, portals, integrations and small applications built around the way your team already works.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+          <h3>AI-Assisted Development</h3>
+          <p>Help your existing IT team use tools such as Claude Code to speed up scripting, APIs, testing and infrastructure automation.</p>
+        </div>
+      </div>
+
+      <p class="services-note reveal">Every business is different. The first step is finding where automation will make a measurable difference.</p>
+    </div>
+  </section>
+
+  <!-- SAVINGS -->
+  <section class="savings" id="savings">
+    <div class="container">
+      <div class="savings-grid">
+        <div class="savings-text reveal">
+          <p class="section-label">The Honest Numbers</p>
+          <h2 class="section-title">Can AI really save money?</h2>
+          <p>It can, but results depend on how it&rsquo;s implemented. The UK Government&rsquo;s 2026 AI Adoption Survey asked businesses already using AI what effect it had on their operating costs:</p>
+          <div class="savings-stats">
+            <div class="stat-card">
+              <div class="stat-number">24%</div>
+              <div class="stat-label">reported lower operating costs</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">64%</div>
+              <div class="stat-label">saw no immediate change</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">9%</div>
+              <div class="stat-label">reported higher costs</div>
+            </div>
+          </div>
+          <p>That&rsquo;s why I won&rsquo;t promise you&rsquo;ll cut costs by some headline percentage. Buying AI tools doesn&rsquo;t save money on its own. Applying them to the right process, and checking the results, does.</p>
+          <p class="savings-approach">I measure how long a process takes today, automate what can safely be automated, and compare the results afterwards.</p>
+          <p class="savings-source" style="margin-top: 1.5rem;">Source: <a href="https://www.gov.uk/government/publications/ai-adoption-survey-2026" target="_blank" rel="noopener">UK Government, AI Adoption Survey 2026</a>, published 29 October 2026. Findings are self-reported by businesses using AI and are not a guarantee of results.</p>
+        </div>
+
+        <div class="calc reveal" id="calculator">
+          <div class="calc-head">
+            <h3>Time-savings calculator</h3>
+            <span class="calc-badge">Illustrative</span>
+          </div>
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label for="calcStaff">Staff affected</label>
+              <div class="calc-input-wrap"><input type="number" id="calcStaff" min="0" step="1" value="5" inputmode="numeric"></div>
+            </div>
+            <div class="calc-field">
+              <label for="calcHours">Hours saved per person per week</label>
+              <div class="calc-input-wrap"><input type="number" id="calcHours" min="0" step="0.5" value="3" inputmode="decimal"></div>
+            </div>
+            <div class="calc-field">
+              <label for="calcRate">Hourly employment cost</label>
+              <div class="calc-input-wrap"><span class="prefix">&pound;</span><input type="number" id="calcRate" min="0" step="1" value="25" inputmode="decimal"></div>
+            </div>
+            <div class="calc-field">
+              <label for="calcRunning">Monthly automation running cost</label>
+              <div class="calc-input-wrap"><span class="prefix">&pound;</span><input type="number" id="calcRunning" min="0" step="10" value="150" inputmode="decimal"></div>
+            </div>
+          </div>
+          <div class="calc-results" aria-live="polite">
+            <div>
+              <div class="calc-result-label">Annual capacity value</div>
+              <div class="calc-result-value" id="calcGross">&pound;19,500</div>
+            </div>
+            <div>
+              <div class="calc-result-label">After running costs</div>
+              <div class="calc-result-value calc-result-value--muted" id="calcNet">&pound;17,700</div>
+            </div>
+          </div>
+          <p class="calc-note">Assumes 52 working weeks and that all estimated hours are genuinely saved. Excludes setup fees, training, oversight, maintenance and leave. This estimates the value of staff time freed up, not guaranteed cash savings or profit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="case-study" id="case-study">
+    <div class="container">
+      <p class="section-label reveal">Case Study</p>
+      <h2 class="section-title reveal">Real experience. Real software.</h2>
+      <p class="section-intro reveal">The best evidence that I can deliver for your business is something I&rsquo;ve already built and run myself.</p>
+
+      <div class="project-card reveal">
+        <div class="project-visual">
+          <div class="project-visual-pattern"></div>
+          <div style="text-align: center; position: relative; z-index: 1;">
+            <img src="https://vox9.io/vox9-logo2.png" alt="Vox9 Studios" style="max-width: 200px; width: 100%; filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.3)); margin-bottom: 0.75rem;">
+            <div class="vox9-logo-sub">The Voice of Independent Authors</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-tag">Platform &middot; Built with AI-Assisted Development</p>
+          <h3 class="project-name">Vox9 Studios</h3>
+          <div class="award-badge">&#127942; Nominated, Rising Star Award, UK Startup Awards</div>
+          <p class="project-desc">I founded and built Vox9, a commercial audiobook platform for independent authors, using Claude Code as a core engineering tool. It&rsquo;s a live product run by Vox9 Studios Ltd, connecting more than a dozen third-party services, and every one of them was set up with the help of AI.</p>
+          <ul class="check-list">
+            <li>AI voice narration and automatic captions for uploaded audio</li>
+            <li>Author publishing tools, listener accounts and a mobile app with push notifications</li>
+            <li>Stripe and PayPal payments, subscriptions, author payouts and Patreon supporter access</li>
+            <li>Audio advertising, listener analytics and automated community moderation</li>
+            <li>Cloud database, hosting and file storage across UK, EU and US providers, run under UK GDPR</li>
+          </ul>
+          <a href="https://vox9.io" target="_blank" rel="noopener" class="project-link">
+            Visit vox9.io
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="case-takeaway reveal">
+        <strong>Why this matters to you:</strong> I designed the architecture, directed the AI-assisted build, reviewed every change and run it in production. That same approach can build useful software and automate your processes without the overhead of a full development team.
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="container">
+      <p class="section-label reveal">Why LondonIAC</p>
+      <h2 class="section-title section-title--light reveal">25+ years of engineering. Practical AI delivery.</h2>
+      <p class="section-intro section-intro--light reveal">I&rsquo;m Dennis McCarthy, founder of London Infrastructure as Code. I&rsquo;ve spent more than 25 years building automation and infrastructure for financial institutions and major technology vendors. Today I combine that experience with modern AI-assisted development.</p>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h3>Engineering experience, not just AI enthusiasm</h3>
+          <p>I understand APIs, databases, infrastructure, security, deployment and the operational work that starts once software goes live.</p>
+        </div>
+        <div class="why-card reveal">
+          <h3>Proven on a working product</h3>
+          <p>Vox9 shows what AI-assisted development can achieve when it&rsquo;s backed by sound architecture and engineering judgement.</p>
+        </div>
+        <div class="why-card reveal">
+          <h3>Solutions you can understand and maintain</h3>
+          <p>Clear documentation, a proper handover and sensible controls. No mystery systems that only their developer understands.</p>
+        </div>
+        <div class="why-card reveal">
+          <h3>Your business stays in control</h3>
+          <p>Sensitive data, system permissions, human approval steps and ongoing costs are all agreed before any automation goes live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <p class="section-label reveal">How It Works</p>
+      <h2 class="section-title reveal">Small steps. Measurable results.</h2>
+
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <p class="process-num">STEP 01</p>
+          <h3>Discover</h3>
+          <p>We talk about your business, the software you already use and where your team spends time on repetitive work.</p>
+        </div>
+        <div class="process-step reveal">
+          <p class="process-num">STEP 02</p>
+          <h3>Assess</h3>
+          <p>I identify practical opportunities and estimate the likely benefits, costs and risks of each one.</p>
+        </div>
+        <div class="process-step reveal">
+          <p class="process-num">STEP 03</p>
+          <h3>Build</h3>
+          <p>We agree a small, clearly defined project. I build and test it, with review and approval steps built in.</p>
+        </div>
+        <div class="process-step reveal">
+          <p class="process-num">STEP 04</p>
+          <h3>Measure &amp; Improve</h3>
+          <p>We compare results with the original process, train your staff and decide whether more automation is worth it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="section-label reveal">Book a Free Call</p>
+      <h2 class="section-title reveal">Start with one problem.</h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>You don&rsquo;t need to commit to a major AI project.</h3>
+          <p>Start with a free 20-minute conversation about one repetitive or frustrating process in your business. If there&rsquo;s a worthwhile opportunity, I&rsquo;ll explain what could be built, what it would involve, and whether the benefit justifies the cost. If there isn&rsquo;t, I&rsquo;ll tell you that too.</p>
+          <a href="mailto:dennis@londoniac.co.uk?subject=AI%20Opportunity%20Call" class="contact-email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            dennis@londoniac.co.uk
+          </a>
+          <p class="contact-area">Serving East Grinstead, Sussex, Surrey and London, and businesses remotely across the UK.</p>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="business">Business</label>
+            <input type="text" id="business" name="business" placeholder="Business name and what you do">
+          </div>
+          <div class="form-group">
+            <label for="process">Which process would you like to improve?</label>
+            <select id="process" name="process">
+              <option>Emails and enquiries</option>
+              <option>Documents and data entry</option>
+              <option>Reporting and spreadsheets</option>
+              <option>Customer management / CRM</option>
+              <option>Internal business tools</option>
+              <option>AI-assisted development for my team</option>
+              <option selected>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about it</label>
+            <textarea id="message" name="message" placeholder="What takes up too much time today? Roughly how many people and hours does it involve?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">Request My Free Call</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><a href="/">London <span>Infrastructure As Code</span></a></div>
+    <p>&copy; 2024&ndash;2026 Dennis McCarthy &middot; londoniac.co.uk</p>
+    <p>Research: <a href="https://www.gov.uk/government/publications/ai-adoption-survey-2026" target="_blank" rel="noopener">UK Government, AI Adoption Survey 2026</a>, published 29 October 2026. Survey findings are self-reported and should not be read as guaranteed results.</p>
+  </footer>
+
+  <script>
+    // Savings calculator
+    const calcIds = ['calcStaff', 'calcHours', 'calcRate', 'calcRunning'];
+    const gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+    function readNum(id) {
+      const v = parseFloat(document.getElementById(id).value);
+      return isFinite(v) && v > 0 ? v : 0;
+    }
+    function updateCalc() {
+      const gross = readNum('calcStaff') * readNum('calcHours') * 52 * readNum('calcRate');
+      const net = gross - readNum('calcRunning') * 12;
+      document.getElementById('calcGross').textContent = gbp.format(gross);
+      document.getElementById('calcNet').textContent = gbp.format(net);
+    }
+    calcIds.forEach(id => document.getElementById(id).addEventListener('input', updateCalc));
+    updateCalc();
+
+    // Contact form → opens email client with pre-filled message
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.querySelector('#name').value;
+      const email = this.querySelector('#email').value;
+      const business = this.querySelector('#business').value;
+      const process = this.querySelector('#process').value;
+      const message = this.querySelector('#message').value;
+      const subject = `AI Opportunity Call: ${process}`;
+      const body = `Hi Dennis,\n\n${message}\n\nProcess to improve: ${process}\nBusiness: ${business || 'Not given'}\n\nFrom: ${name}\nEmail: ${email}`;
+      window.location.href = `mailto:dennis@londoniac.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => { links.classList.toggle('open'); });
+    links.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => links.classList.remove('open')); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
