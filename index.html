@@ -235,27 +235,48 @@
       background: radial-gradient(circle at 30% 50%, rgba(0, 229, 255, 0.2) 0%, transparent 50%),
                   radial-gradient(circle at 70% 50%, rgba(0, 184, 212, 0.15) 0%, transparent 40%);
     }
-    .project-visual--game { background: linear-gradient(135deg, #000a00, #001a00); }
+    .project-visual--game { background: linear-gradient(135deg, #05070d, #10131c); }
     .project-visual--game .project-visual-pattern {
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 3px),
-        radial-gradient(circle at 50% 30%, rgba(0, 255, 136, 0.08) 0%, transparent 60%);
+      opacity: 1;
+      background: radial-gradient(circle at 70% 20%, rgba(240, 180, 30, 0.08) 0%, transparent 55%);
     }
-    .game-terminal {
-      position: relative; z-index: 1; width: 85%; font-family: 'Fira Code', monospace;
-      background: rgba(0, 20, 0, 0.8); border: 1px solid rgba(0, 255, 136, 0.2);
-      border-radius: 8px; padding: 1.25rem; box-shadow: 0 0 40px rgba(0, 255, 136, 0.1);
+    .game-shot {
+      position: relative; z-index: 1; display: block; width: 100%;
+      border-radius: 8px; overflow: hidden; line-height: 0;
+      border: 1px solid rgba(240, 180, 30, 0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(240, 180, 30, 0.08);
     }
-    .game-terminal-bar {
-      display: flex; gap: 6px; margin-bottom: 1rem; padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+    .project-visual .game-shot img {
+      width: 100%; height: auto; max-height: none; border-radius: 0; filter: none; display: block;
     }
-    .game-terminal-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0, 255, 136, 0.4); }
-    .game-terminal p {
-      font-size: 0.65rem; color: #00ff88; line-height: 1.8; margin: 0; opacity: 0.85;
-    }
-    .game-terminal .dim { opacity: 0.4; }
-    .game-terminal .bright { color: #00ff88; opacity: 1; text-shadow: 0 0 8px rgba(0, 255, 136, 0.5); }
+
+    /* ── AI WORKFLOW DIAGRAM ── */
+    .workflow { position: relative; z-index: 1; width: 100%; height: auto; display: block; font-family: 'DM Sans', sans-serif; }
+    .wf-frame { fill: rgba(10, 14, 26, 0.88); stroke: rgba(0, 184, 212, 0.2); stroke-width: 1; }
+    .wf-divider { stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; }
+    .wf-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; fill: #fff; }
+    .wf-sub { font-size: 12px; fill: rgba(255, 255, 255, 0.45); }
+    .wf-status { fill: rgba(40, 200, 64, 0.1); stroke: rgba(40, 200, 64, 0.35); }
+    .wf-status-dot { fill: #28c840; }
+    .wf-status-text { font-family: 'Fira Code', monospace; font-size: 10.5px; fill: #5fe07a; }
+    .wf-lines path { fill: none; stroke: rgba(0, 184, 212, 0.25); stroke-width: 1.5; }
+    .wf-flow path { fill: none; stroke: var(--cyan-glow); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 3 14; animation: wfFlow 1.6s linear infinite; }
+    @keyframes wfFlow { to { stroke-dashoffset: -17; } }
+    .wf-node > rect:first-child { fill: #151b2e; stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
+    .wf-glyph { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; fill: #fff; text-anchor: middle; }
+    .wf-glyph--sm { font-size: 8.5px; letter-spacing: 0.02em; }
+    .wf-name { font-weight: 600; font-size: 12.5px; fill: #fff; }
+    .wf-desc { font-size: 10.5px; fill: rgba(255, 255, 255, 0.45); }
+    .wf-ai > rect { fill: rgba(0, 184, 212, 0.1); stroke: var(--cyan); stroke-width: 1.5; filter: drop-shadow(0 0 12px rgba(0, 184, 212, 0.35)); }
+    .wf-spark { fill: var(--cyan-glow); }
+    .wf-ai-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px; fill: #fff; }
+    .wf-dot { fill: var(--cyan); }
+    .wf-step { font-family: 'Fira Code', monospace; font-size: 11px; fill: rgba(255, 255, 255, 0.75); }
+    .wf-approve > rect:first-child { stroke: rgba(40, 200, 64, 0.4); }
+    .wf-check-bg { fill: rgba(40, 200, 64, 0.15); }
+    .wf-check { fill: none; stroke: #5fe07a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .wf-foot { font-family: 'Fira Code', monospace; font-size: 10px; fill: rgba(0, 184, 212, 0.6); letter-spacing: 0.12em; text-transform: uppercase; }
+    @media (prefers-reduced-motion: reduce) { .wf-flow path { animation: none; } }
 
     .project-visual img {
       position: relative; z-index: 1; max-width: 100%; max-height: 240px;
@@ -593,18 +614,82 @@
         <div class="project-card reveal">
           <div class="project-visual project-visual--web">
             <div class="project-visual-pattern"></div>
-            <div class="game-terminal" style="background: rgba(10, 14, 26, 0.85); border-color: rgba(0, 184, 212, 0.25); box-shadow: 0 0 40px rgba(0, 184, 212, 0.1);">
-              <div class="game-terminal-bar" style="border-bottom-color: rgba(0, 184, 212, 0.12);">
-                <div class="game-terminal-dot" style="background: rgba(0, 184, 212, 0.5);"></div>
-                <div class="game-terminal-dot" style="background: rgba(0, 184, 212, 0.5);"></div>
-                <div class="game-terminal-dot" style="background: rgba(0, 184, 212, 0.5);"></div>
-              </div>
-              <p style="color: var(--cyan); opacity: 0.45;">&gt; inbox: 37 new enquiries</p>
-              <p style="color: var(--cyan-glow);">&gt; sorted, details extracted, CRM updated</p>
-              <p style="color: var(--cyan); opacity: 0.45;">&gt; weekly report: generated</p>
-              <p style="color: var(--cyan-glow);">&gt; replies drafted for approval</p>
-              <p style="color: var(--cyan-glow); margin-top: 0.5rem;">&gt; your team: back to real work</p>
-            </div>
+            <svg class="workflow" viewBox="0 0 600 340" role="img" aria-label="Example AI workflow: emails, website enquiries and invoice PDFs are read by an AI agent, checked by a person, then sent to Excel, Xero, HubSpot and Microsoft Teams">
+              <!-- editor frame -->
+              <rect x="1" y="1" width="598" height="338" rx="14" class="wf-frame"/>
+              <text x="22" y="32" class="wf-title">Workflow</text>
+              <text x="88" y="32" class="wf-sub">New enquiry &amp; invoice handling</text>
+              <rect x="498" y="17" width="82" height="22" rx="11" class="wf-status"/>
+              <circle cx="512" cy="28" r="3.5" class="wf-status-dot"/>
+              <text x="522" y="32" class="wf-status-text">Running</text>
+              <line x1="1" y1="50" x2="599" y2="50" class="wf-divider"/>
+
+              <!-- connectors -->
+              <g class="wf-lines">
+                <path d="M130 110 C150 110,150 150,170 150"/>
+                <path d="M130 170 L170 170"/>
+                <path d="M130 230 C150 230,150 190,170 190"/>
+                <path d="M300 170 L330 170"/>
+                <path d="M420 170 C435 170,435 85,450 85"/>
+                <path d="M420 170 C435 170,435 141,450 141"/>
+                <path d="M420 170 C435 170,435 199,450 199"/>
+                <path d="M420 170 C435 170,435 255,450 255"/>
+              </g>
+              <g class="wf-flow">
+                <path d="M130 110 C150 110,150 150,170 150"/>
+                <path d="M130 170 L170 170"/>
+                <path d="M130 230 C150 230,150 190,170 190"/>
+                <path d="M300 170 L330 170"/>
+                <path d="M420 170 C435 170,435 85,450 85"/>
+                <path d="M420 170 C435 170,435 141,450 141"/>
+                <path d="M420 170 C435 170,435 199,450 199"/>
+                <path d="M420 170 C435 170,435 255,450 255"/>
+              </g>
+
+              <!-- triggers -->
+              <g class="wf-node"><rect x="10" y="88" width="120" height="44" rx="9"/>
+                <rect x="20" y="97" width="26" height="26" rx="6" fill="#0078D4"/><text x="33" y="115" class="wf-glyph">O</text>
+                <text x="54" y="107" class="wf-name">Outlook</text><text x="54" y="122" class="wf-desc">New email</text></g>
+              <g class="wf-node"><rect x="10" y="148" width="120" height="44" rx="9"/>
+                <rect x="20" y="157" width="26" height="26" rx="6" fill="#6366f1"/><text x="33" y="175" class="wf-glyph">&#8801;</text>
+                <text x="54" y="167" class="wf-name">Web form</text><text x="54" y="182" class="wf-desc">Enquiry</text></g>
+              <g class="wf-node"><rect x="10" y="208" width="120" height="44" rx="9"/>
+                <rect x="20" y="217" width="26" height="26" rx="6" fill="#E63946"/><text x="33" y="234" class="wf-glyph wf-glyph--sm">PDF</text>
+                <text x="54" y="227" class="wf-name">Invoice</text><text x="54" y="242" class="wf-desc">Attachment</text></g>
+
+              <!-- AI agent -->
+              <g class="wf-ai"><rect x="170" y="112" width="130" height="116" rx="11"/>
+                <path d="M190 128 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" class="wf-spark"/>
+                <text x="206" y="143" class="wf-ai-title">AI Agent</text>
+                <line x1="182" y1="158" x2="288" y2="158" class="wf-divider"/>
+                <circle cx="188" cy="176" r="3" class="wf-dot"/><text x="198" y="180" class="wf-step">Classify</text>
+                <circle cx="188" cy="196" r="3" class="wf-dot"/><text x="198" y="200" class="wf-step">Extract data</text>
+                <circle cx="188" cy="216" r="3" class="wf-dot"/><text x="198" y="220" class="wf-step">Draft reply</text></g>
+
+              <!-- human approval -->
+              <g class="wf-node wf-approve"><rect x="330" y="146" width="90" height="48" rx="9"/>
+                <circle cx="350" cy="170" r="10" class="wf-check-bg"/><path d="M345 170 l3.5 3.5 6.5 -7" class="wf-check"/>
+                <text x="366" y="167" class="wf-name">Approve</text><text x="366" y="181" class="wf-desc">Human</text></g>
+
+              <!-- outputs -->
+              <g class="wf-node"><rect x="450" y="63" width="140" height="44" rx="9"/>
+                <rect x="460" y="72" width="26" height="26" rx="6" fill="#217346"/><text x="473" y="90" class="wf-glyph">X</text>
+                <text x="494" y="82" class="wf-name">Excel</text><text x="494" y="97" class="wf-desc">Add to sheet</text></g>
+              <g class="wf-node"><rect x="450" y="119" width="140" height="44" rx="9"/>
+                <rect x="460" y="128" width="26" height="26" rx="6" fill="#13B5EA"/><text x="473" y="146" class="wf-glyph">x</text>
+                <text x="494" y="138" class="wf-name">Xero</text><text x="494" y="153" class="wf-desc">Draft bill</text></g>
+              <g class="wf-node"><rect x="450" y="177" width="140" height="44" rx="9"/>
+                <rect x="460" y="186" width="26" height="26" rx="6" fill="#FF7A59"/><text x="473" y="204" class="wf-glyph">H</text>
+                <text x="494" y="196" class="wf-name">HubSpot</text><text x="494" y="211" class="wf-desc">Update contact</text></g>
+              <g class="wf-node"><rect x="450" y="233" width="140" height="44" rx="9"/>
+                <rect x="460" y="242" width="26" height="26" rx="6" fill="#5059C9"/><text x="473" y="260" class="wf-glyph">T</text>
+                <text x="494" y="252" class="wf-name">Teams</text><text x="494" y="267" class="wf-desc">Notify sales</text></g>
+
+              <text x="22" y="318" class="wf-foot">Triggers</text>
+              <text x="235" y="318" class="wf-foot" text-anchor="middle">AI step</text>
+              <text x="375" y="318" class="wf-foot" text-anchor="middle">Check</text>
+              <text x="578" y="318" class="wf-foot" text-anchor="end">Your systems</text>
+            </svg>
           </div>
           <div class="project-info">
             <p class="project-tag">Service</p>
@@ -682,19 +767,12 @@
         <div class="project-card reveal">
           <div class="project-visual project-visual--game">
             <div class="project-visual-pattern"></div>
-            <div class="game-terminal">
-              <div class="game-terminal-bar">
-                <div class="game-terminal-dot"></div>
-                <div class="game-terminal-dot"></div>
-                <div class="game-terminal-dot"></div>
-              </div>
-              <p class="dim">&gt; SYSTEM: Space Refuse Collector MK-IV</p>
-              <p class="bright">&gt; STATUS: Black transponder active</p>
-              <p class="dim">&gt; MISSION: Intercept House Cayston corvette</p>
-              <p class="bright">&gt; WEAPON: Bio-waste container armed</p>
-              <p class="dim">&gt; OBJECTIVE: Save the Royal Yacht</p>
-              <p class="bright" style="margin-top: 0.5rem;">&gt; LAUNCH GAME? [Y]</p>
-            </div>
+            <a href="https://theblackshipgame.com/" target="_blank" rel="noopener" class="game-shot">
+              <picture>
+                <source srcset="images/the-black-ship-game.webp" type="image/webp">
+                <img src="images/the-black-ship-game.jpg" alt="The Black Ship game title screen, showing the chapter menu and a ship flying through space" width="1200" height="677" loading="lazy" decoding="async">
+              </picture>
+            </a>
           </div>
           <div class="project-info">
             <p class="project-tag">Game &middot; 3D</p>
