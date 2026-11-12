@@ -291,6 +291,14 @@
       position: relative; overflow: hidden; min-height: 320px;
       background: linear-gradient(135deg, #030308, #1a0a2e);
     }
+    .vox9-shot {
+      position: relative; z-index: 1; display: block; width: 100%; line-height: 0;
+      border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 229, 255, 0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(170, 0, 255, 0.12);
+      transition: transform 0.4s ease;
+    }
+    .vox9-shot:hover { transform: scale(1.02); }
+    .vox9-shot img { width: 100%; height: auto; display: block; }
     .project-visual-pattern {
       position: absolute; inset: 0; opacity: 0.1;
       background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255, 0, 255, 0.15) 3px, rgba(255, 0, 255, 0.15) 4px);
@@ -636,10 +644,12 @@
       <div class="project-card reveal">
         <div class="project-visual">
           <div class="project-visual-pattern"></div>
-          <div style="text-align: center; position: relative; z-index: 1;">
-            <img src="/images/vox9-logo.png" alt="Vox9 Studios" width="828" height="400" loading="lazy" decoding="async" style="max-width: 200px; width: 100%; height: auto; filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.3)); margin-bottom: 0.75rem;">
-            <div class="vox9-logo-sub">Stories written to be heard</div>
-          </div>
+          <a href="https://vox9.io/hub" target="_blank" rel="noopener" class="vox9-shot">
+            <picture>
+              <source srcset="/images/vox9-hub.webp" type="image/webp">
+              <img src="/images/vox9-hub.jpg" alt="The Vox9 hub, showing featured audiobooks, genre filters and playlists" width="1200" height="574" loading="lazy" decoding="async">
+            </picture>
+          </a>
         </div>
         <div class="project-info">
           <p class="project-tag">Platform &middot; Built with AI-Assisted Development</p>
@@ -653,8 +663,8 @@
             <li>Audio advertising, listener analytics and automated community moderation</li>
             <li>Cloud database, hosting and file storage across UK, EU and US providers, run under UK GDPR</li>
           </ul>
-          <a href="https://vox9.io" target="_blank" rel="noopener" class="project-link">
-            Visit vox9.io
+          <a href="https://vox9.io/hub" target="_blank" rel="noopener" class="project-link">
+            Explore the Vox9 hub
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
         </div>

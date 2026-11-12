@@ -369,40 +369,76 @@
       text-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
     }
 
-    /* ── WEB DEV MOCKUP ── */
-    .web-mockup {
-      position: relative; z-index: 1; width: 80%;
-      background: var(--navy-mid); border-radius: 8px;
-      border: 1px solid rgba(0, 184, 212, 0.15); overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    /* ── WEB DEV DEMO ── */
+    .shot--vox9 { border-color: rgba(0, 229, 255, 0.25); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(170, 0, 255, 0.12); }
+    .site-demo { position: relative; z-index: 1; width: 100%; padding: 0 7% 8% 0; }
+    .site-desktop {
+      background: #fff; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .web-mockup-bar {
-      height: 28px; background: rgba(255, 255, 255, 0.05);
-      display: flex; align-items: center; gap: 6px; padding: 0 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    .site-bar { height: 24px; background: #e9ecf1; display: flex; align-items: center; gap: 5px; padding: 0 9px; position: relative; }
+    .site-bar span { width: 7px; height: 7px; border-radius: 50%; background: #ff5f57; }
+    .site-bar span:nth-child(2) { background: #ffbd2e; }
+    .site-bar span:nth-child(3) { background: #28c840; }
+    .site-screen { position: relative; container-type: inline-size; }
+    .site-desktop .site-screen { aspect-ratio: 4 / 3; overflow: visible; }
+    .site {
+      position: absolute; inset: 0; background: #fff; opacity: 0;
+      animation: siteCycle 12s infinite; font-family: 'Outfit', sans-serif;
     }
-    .web-mockup-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .web-mockup-dot:nth-child(1) { background: #ff5f57; }
-    .web-mockup-dot:nth-child(2) { background: #ffbd2e; }
-    .web-mockup-dot:nth-child(3) { background: #28c840; }
-    .web-mockup-body { padding: 1.25rem; }
-    .web-mockup-nav {
-      height: 6px; width: 60%; background: rgba(0, 184, 212, 0.2);
-      border-radius: 3px; margin-bottom: 1rem;
+    .site:nth-child(2) { animation-delay: -8s; }
+    .site:nth-child(3) { animation-delay: -4s; }
+    @keyframes siteCycle { 0% { opacity: 0; } 4% { opacity: 1; } 31% { opacity: 1; } 36% { opacity: 0; } 100% { opacity: 0; } }
+    .site-url {
+      position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+      font-family: 'Fira Code', monospace; font-size: 9px; line-height: 16px; color: #6b7280;
+      background: #fff; padding: 0 14px; border-radius: 4px; white-space: nowrap;
     }
-    .web-mockup-hero {
-      height: 40px; background: linear-gradient(90deg, rgba(0, 184, 212, 0.15), rgba(0, 184, 212, 0.05));
-      border-radius: 6px; margin-bottom: 0.75rem;
+    .site-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5cqw 6cqw; }
+    .site-logo { font-weight: 800; font-size: 4cqw; color: var(--site-ink); letter-spacing: -0.01em; }
+    .site-links { display: flex; gap: 3cqw; }
+    .site-links i { display: block; width: 7cqw; height: 1.4cqw; border-radius: 1cqw; background: #d6dae1; }
+    .site-hero { margin: 0 6cqw; padding: 4.5cqw 6cqw; border-radius: 3cqw; background: var(--site-grad); color: #fff; }
+    .site-h { font-weight: 800; font-size: 6.2cqw; line-height: 1.05; max-width: 70%; margin-bottom: 2.5cqw; letter-spacing: -0.02em; }
+    .site-p { height: 1.4cqw; width: 55%; border-radius: 1cqw; background: rgba(255, 255, 255, 0.55); margin-bottom: 1.6cqw; }
+    .site-p--short { width: 38%; }
+    .site-btn {
+      display: inline-block; margin-top: 1.5cqw; padding: 1.6cqw 4cqw; border-radius: 10cqw;
+      background: #fff; color: var(--site-ink); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 2.8cqw;
+      animation: sitePulse 2s ease-in-out infinite;
     }
-    .web-mockup-text { height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 2px; margin-bottom: 6px; }
-    .web-mockup-text:nth-child(4) { width: 75%; }
-    .web-mockup-text:nth-child(5) { width: 50%; }
-    .web-mockup-cards {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 1rem;
+    @keyframes sitePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); } 50% { box-shadow: 0 0 0 1.5cqw rgba(255, 255, 255, 0); } }
+    .site-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; padding: 3.5cqw 6cqw; }
+    .site-cards div { border: 1px solid #eef0f3; border-radius: 2cqw; padding: 2.5cqw; }
+    .site-cards b { display: block; height: 7cqw; border-radius: 1.5cqw; background: var(--site-soft); margin-bottom: 2cqw; }
+    .site-cards i { display: block; height: 1.2cqw; border-radius: 1cqw; background: #e3e6eb; margin-bottom: 1.2cqw; }
+    .site-cards i + i { width: 60%; }
+    .site--bakery { --site-ink: #92400e; --site-grad: linear-gradient(135deg, #f59e0b, #b45309); --site-soft: #fde7c2; }
+    .site--plumber { --site-ink: #1e3a8a; --site-grad: linear-gradient(135deg, #0ea5e9, #1e40af); --site-soft: #d3e9fb; }
+    .site--florist { --site-ink: #9d174d; --site-grad: linear-gradient(135deg, #f472b6, #7c3aed); --site-soft: #fbd9ea; }
+
+    .site-phone {
+      position: absolute; right: 0; bottom: 0; width: 26%;
+      background: #0d1020; border-radius: 16px; padding: 7px 5px 9px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15);
     }
-    .web-mockup-card {
-      height: 36px; background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 4px;
+    .site-notch { width: 34%; height: 5px; border-radius: 4px; background: #1f2437; margin: 0 auto 5px; }
+    .site-phone .site-screen { aspect-ratio: 9 / 17; border-radius: 9px; overflow: hidden; }
+    .site-phone .site-nav { padding: 7cqw; }
+    .site-phone .site-logo { font-size: 9.5cqw; }
+    .site-burger { display: flex; flex-direction: column; gap: 3cqw; }
+    .site-burger i { display: block; width: 10cqw; height: 2cqw; border-radius: 1cqw; background: #c4c9d2; }
+    .site-phone .site-hero { margin: 0 6cqw; padding: 9cqw 8cqw; border-radius: 6cqw; }
+    .site-phone .site-h { font-size: 12.5cqw; max-width: 100%; margin-bottom: 6cqw; }
+    .site-phone .site-p { height: 3cqw; width: 80%; margin-bottom: 3cqw; }
+    .site-phone .site-btn { font-size: 7cqw; padding: 4cqw 8cqw; margin-top: 3cqw; }
+    .site-phone .site-cards { grid-template-columns: 1fr 1fr; gap: 5cqw; padding: 7cqw 6cqw; }
+    .site-phone .site-cards div { padding: 5cqw; border-radius: 4cqw; }
+    .site-phone .site-cards b { height: 16cqw; border-radius: 3cqw; margin-bottom: 4cqw; }
+    .site-phone .site-cards i { height: 2.5cqw; margin-bottom: 2.5cqw; }
+    @media (prefers-reduced-motion: reduce) {
+      .site, .site-btn { animation: none; }
+      .site:first-child { opacity: 1; }
     }
 
     /* ── TRAINING ── */
@@ -594,47 +630,6 @@
 
       <div class="projects-grid">
 
-        <!-- Web Dev -->
-        <div class="project-card tilt reveal">
-          <div class="project-visual project-visual--web">
-            <div class="project-visual-pattern"></div>
-            <div class="web-mockup">
-              <div class="web-mockup-bar">
-                <div class="web-mockup-dot"></div>
-                <div class="web-mockup-dot"></div>
-                <div class="web-mockup-dot"></div>
-              </div>
-              <div class="web-mockup-body">
-                <div class="web-mockup-nav"></div>
-                <div class="web-mockup-hero"></div>
-                <div class="web-mockup-text"></div>
-                <div class="web-mockup-text"></div>
-                <div class="web-mockup-text"></div>
-                <div class="web-mockup-cards">
-                  <div class="web-mockup-card"></div>
-                  <div class="web-mockup-card"></div>
-                  <div class="web-mockup-card"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <p class="project-tag">Service</p>
-            <h3 class="project-name">Web Development</h3>
-            <p class="project-desc">Professional, modern websites for local businesses. Mobile-first, fast-loading, and designed to turn visitors into customers. From single-page sites to full builds, I handle the lot.</p>
-            <div class="project-features">
-              <span>Responsive Design</span>
-              <span>SEO Optimised</span>
-              <span>Fast Loading</span>
-              <span>Domain Setup</span>
-            </div>
-            <a href="#contact" class="project-link">
-              Let&rsquo;s talk
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
-          </div>
-        </div>
-
         <!-- AI Automation -->
         <div class="project-card tilt reveal">
           <div class="project-visual project-visual--web">
@@ -737,10 +732,12 @@
         <div class="project-card tilt reveal">
           <div class="project-visual project-visual--vox9">
             <div class="project-visual-pattern"></div>
-            <div style="text-align: center; position: relative; z-index: 1;">
-              <img src="images/vox9-logo.png" alt="Vox9 Studios" width="828" height="400" loading="lazy" decoding="async" style="max-width: 200px; height: auto; filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.3)); margin-bottom: 0.75rem;">
-              <div class="vox9-logo-sub">Stories written to be heard</div>
-            </div>
+            <a href="https://vox9.io/hub" target="_blank" rel="noopener" class="game-shot shot--vox9">
+              <picture>
+                <source srcset="images/vox9-hub.webp" type="image/webp">
+                <img src="images/vox9-hub.jpg" alt="The Vox9 hub, showing featured audiobooks, genre filters and playlists" width="1200" height="574" loading="lazy" decoding="async">
+              </picture>
+            </a>
           </div>
           <div class="project-info">
             <p class="project-tag">Platform</p>
@@ -753,8 +750,8 @@
               <span>Custom MP3 Upload</span>
               <span>Real-time Metrics</span>
             </div>
-            <a href="https://vox9.io" target="_blank" rel="noopener" class="project-link">
-              Visit vox9.io
+            <a href="https://vox9.io/hub" target="_blank" rel="noopener" class="project-link">
+              Explore the Vox9 hub
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
           </div>
@@ -826,6 +823,73 @@
             </div>
             <a href="https://theblackshipgame.com/" target="_blank" rel="noopener" class="project-link">
               Play the game
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Web Dev -->
+        <div class="project-card tilt reveal">
+          <div class="project-visual project-visual--web">
+            <div class="project-visual-pattern"></div>
+            <div class="site-demo" role="img" aria-label="Example websites for a bakery, a plumber and a florist, shown on desktop and mobile">
+              <div class="site-desktop">
+                <div class="site-bar"><span></span><span></span><span></span></div>
+                <div class="site-screen">
+                  <div class="site site--bakery">
+                    <div class="site-url">hearthandcrumb.co.uk</div>
+                    <div class="site-nav"><span class="site-logo">Hearth &amp; Crumb</span><span class="site-links"><i></i><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Fresh bread, every morning</div><div class="site-p"></div><div class="site-p site-p--short"></div><span class="site-btn">Order online</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                  <div class="site site--plumber">
+                    <div class="site-url">brightwaterplumbing.co.uk</div>
+                    <div class="site-nav"><span class="site-logo">Brightwater</span><span class="site-links"><i></i><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Same-day plumbing repairs</div><div class="site-p"></div><div class="site-p site-p--short"></div><span class="site-btn">Book a visit</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                  <div class="site site--florist">
+                    <div class="site-url">petalandstem.co.uk</div>
+                    <div class="site-nav"><span class="site-logo">Petal &amp; Stem</span><span class="site-links"><i></i><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Flowers for every occasion</div><div class="site-p"></div><div class="site-p site-p--short"></div><span class="site-btn">Shop bouquets</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="site-phone">
+                <div class="site-notch"></div>
+                <div class="site-screen">
+                  <div class="site site--bakery">
+                    <div class="site-nav"><span class="site-logo">Hearth &amp; Crumb</span><span class="site-burger"><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Fresh bread, every morning</div><div class="site-p"></div><span class="site-btn">Order online</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                  <div class="site site--plumber">
+                    <div class="site-nav"><span class="site-logo">Brightwater</span><span class="site-burger"><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Same-day plumbing repairs</div><div class="site-p"></div><span class="site-btn">Book a visit</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                  <div class="site site--florist">
+                    <div class="site-nav"><span class="site-logo">Petal &amp; Stem</span><span class="site-burger"><i></i><i></i></span></div>
+                    <div class="site-hero"><div class="site-h">Flowers for every occasion</div><div class="site-p"></div><span class="site-btn">Shop bouquets</span></div>
+                    <div class="site-cards"><div><b></b><i></i><i></i></div><div><b></b><i></i><i></i></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <p class="project-tag">Service</p>
+            <h3 class="project-name">Web Development</h3>
+            <p class="project-desc">Professional, modern websites for local businesses. Mobile-first, fast-loading, and designed to turn visitors into customers. From single-page sites to full builds, I handle the lot.</p>
+            <div class="project-features">
+              <span>Responsive Design</span>
+              <span>SEO Optimised</span>
+              <span>Fast Loading</span>
+              <span>Domain Setup</span>
+            </div>
+            <a href="#contact" class="project-link">
+              Let&rsquo;s talk
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
           </div>
